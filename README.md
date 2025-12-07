@@ -2,7 +2,7 @@
 
 This project implements a proof-of-concept AI vacation planner that can understand natural-language travel requests, interpret user preferences, check (mock) calendar availability, search for mock flights and hotels, and assemble a structured, day-by-day VacationPlan using an LLM-powered agent equipped with carefully defined tools. It also provides a dedicated booking endpoint that allows users to confirm a proposed itinerary once they explicitly approve it. The implementation combines FastAPI for the backend API, Pydantic v2 for data modeling and validation, PydanticAI for agent orchestration, OpenAI’s GPT-5-Nano for natural-language reasoning, and a lightweight in-memory storage layer to keep the proof-of-concept fully self-contained and easy to run.
 
-<!-- [Click here to learn more about the project: assistx-vp/assets/Task - AI Engineer (LLM) Revised.pdf](<https://github.com/verneylmavt/assistx-vp/blob/fa8ebaab0b877b795af87f442eb632d78826cb3b/assets/Task%20-%20AI%20Engineer%20(LLM)%20Revised.pdf>). -->
+[Click here to learn more about the project: assistx-vp/assets/Task - AI Engineer (LLM) Revised.pdf](<https://github.com/verneylmavt/assistx-vp/blob/fa8ebaab0b877b795af87f442eb632d78826cb3b/assets/Task%20-%20AI%20Engineer%20(LLM)%20Revised.pdf>).
 
 ## 📁 Project Structure
 
