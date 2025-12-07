@@ -40,8 +40,8 @@ assistx-vp
 
 ## 💡 Solution Report and Solution Demo Video
 
-- The solution report includes overview, solution, and vulnerability and risk.
-- The solution demo video shows the working app, accessible via api call.
+- The solution report includes overview, solution, and vulnerability and risk. [Click here to learn more about the solution report: assistx-vp/assets/vacation_planner_solution.pdf](https://github.com/verneylmavt/assistx-vp/blob/392517c31b3a6190a7c442b79437368a83ac4b44/assets/vacation_planner_solution.pdf).
+- The solution demo video shows the working app, accessible via api call. [Click here to learn more about the solution demo video: assistx-vp/assets/vacation_planner_demo.gif](https://github.com/verneylmavt/assistx-vp/blob/392517c31b3a6190a7c442b79437368a83ac4b44/assets/vacation_planner_demo.gif).
 
 ## 🔌 API
 
