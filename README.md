@@ -77,6 +77,7 @@ assistx-vp
      }'
      ```
 3. **Chat w/ LLM**
+
    - `POST /api/chat`: to send a natural-language message to the AI vacation-planning agent and receive a reply, potentially including a generated VacationPlan
      - Request: `ChatRequest`
      - Response: `ChatResponse`
@@ -88,6 +89,20 @@ assistx-vp
         "user_id": "(user_id)",
         "message": "{message_to_llm}",
         "allow_booking": {bool}
+     }'
+     ```
+
+4. **Book Plan w/ LLM**
+   - `POST /api/chat`: to confirm and record a booking for the latest AI-generated vacation plan within the user’s session, using a provided payment token
+     - Request: `BookRequest`
+     - Response: `BookResponse`
+     ```bash
+     curl -X POST "http://localhost:8000/api/book" \
+     -H "Content-Type: application/json" \
+     -d '{
+        "session_id": "{session_id}",
+        "user_id": "{user_id}",
+        "payment_token": "{payment_token}"
      }'
      ```
 
