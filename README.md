@@ -45,25 +45,25 @@ assistx-vp
 
 ## 🔌 API
 
-1. Health Check
+1. **Health Check**
    - `GET /health`: to verify that the backend is running correctly, responding to requests, and using the expected LLM configuration
      - Request: `None`
      - Response: `'status', 'model'`
      ```bash
-     curl -s "http://localhost:8000/health"
+     curl "http://localhost:8000/health"
      ```
-2. User Preferences
+2. **User Preferences**
    - `GET /api/preferences/{user_id}`: to retrieve the user’s saved travel preferences or automatically initialize defaults if none exist
      - Request: `user_id`
      - Response: `PreferencesResponse`
      ```bash
-     curl -s "http://localhost:8000/api/preferences/{user_id}"
+     curl "http://localhost:8000/api/preferences/{user_id}"
      ```
    - `PUT /api/preferences/{user_id}`: to update the user’s travel preferences with new budgets, origins, interests, or other settings
      - Request: `PreferencesUpdateRequest`
      - Response: `PreferencesResponse`
      ```bash
-     curl -s -X PUT "http://localhost:8000/api/preferences/{user_id}" \
+     curl -X PUT "http://localhost:8000/api/preferences/{user_id}" \
      -H "Content-Type: application/json" \
      -d '{
         "home_city": "{home_city}",
@@ -76,28 +76,18 @@ assistx-vp
         "preferred_hotel_types": ["{preferred_hotel_type_1}", "{preferred_hotel_type_i}", "{preferred_hotel_type_n}"]
      }'
      ```
-3. User Preferences
-   - `GET /api/preferences/{user_id}`: to retrieve the user’s saved travel preferences or automatically initialize defaults if none exist
-     - Request: `user_id`
-     - Response: `PreferencesResponse`
+3. **Chat w/ LLM**
+   - `POST /api/chat`: to send a natural-language message to the AI vacation-planning agent and receive a reply, potentially including a generated VacationPlan
+     - Request: `ChatRequest`
+     - Response: `ChatResponse`
      ```bash
-     curl -s "http://localhost:8000/api/preferences/{user_id}"
-     ```
-   - `PUT /api/preferences/{user_id}`: to update the user’s travel preferences with new budgets, origins, interests, or other settings
-     - Request: `PreferencesUpdateRequest`
-     - Response: `PreferencesResponse`
-     ```bash
-     curl -s -X PUT "http://localhost:8000/api/preferences/{user_id}" \
+     curl -X POST "http://localhost:8000/api/chat" \
      -H "Content-Type: application/json" \
      -d '{
-        "home_city": "{home_city}",
-        "default_currency": "{default_currency}",
-        "max_budget_total": {max_budget_total},
-        "max_budget_per_day": {max_budget_per_day},
-        "interests": ["{interest_1}", "{interest_i}", "{interest_n}"],
-        "travel_style": "{travel_style}",
-        "preferred_airlines": ["{preferred_airline_1}", "{preferred_airline_i}", "{preferred_airline_n}"],
-        "preferred_hotel_types": ["{preferred_hotel_type_1}", "{preferred_hotel_type_i}", "{preferred_hotel_type_n}"]
+        "session_id": "{session_id}",
+        "user_id": "(user_id)",
+        "message": "{message_to_llm}",
+        "allow_booking": {bool}
      }'
      ```
 
