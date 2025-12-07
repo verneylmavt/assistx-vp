@@ -92,7 +92,7 @@ assistx-vp
      }'
      ```
 
-4. **Book Plan w/ LLM**
+4. **Book Plan**
    - `POST /api/book`: to confirm and record a booking for the latest AI-generated vacation plan within the user’s session, using a provided payment token
      - Request: `BookRequest`
      - Response: `BookResponse`
