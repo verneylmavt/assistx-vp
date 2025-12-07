@@ -45,7 +45,7 @@ assistx-vp
 
 ## 🔌 API
 
-1. Health Check
+1. Health Check  
    `GET /health`: to verify that the backend is running correctly, responding to requests, and using the expected LLM configuration
    - Request: `None`
    - Response: `'status', 'model'`
