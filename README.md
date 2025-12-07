@@ -46,30 +46,44 @@ assistx-vp
 ## 🔌 API
 
 1. Health Check
-   - `GET /health`: to verify that the API server is running and reachable
+   - `GET /health`: to verify that the backend is running correctly, responding to requests, and using the expected LLM configuration
      - Request: `None`
      - Response: `'status', 'model'`
    ```bash
    curl -s http://localhost:8000/health
    ```
 2. User Preferences
-   - `GET /api/preferences/{user_id}`: to
+   - `GET /api/preferences/{user_id}`: to retrieve the user’s saved travel preferences or automatically initialize defaults if none exist
+     - Request: `user_id`
+     - Response: `PreferencesResponse`
      ```bash
-     curl -s http://localhost:8000/api/video-sources
+     curl -s "http://localhost:8000/api/preferences/{user_id}"
      ```
-   - `PUT /api/preferences/{user_id}`: to
+   - `PUT /api/preferences/{user_id}`: to update the user’s travel preferences with new budgets, origins, interests, or other settings
+     - Request: `None`
+     - Response: `'status', 'model'`
      ```bash
-     curl -s -X POST http://localhost:8000/api/upload-video \
-     -F "file=@./data/{video_source}.mp4" \
-     -F "name={video_source_name}"
+     curl -s -X POST "http://localhost:8000/api/preferences/user123" \
+     -H "Content-Type: application/json" \
+     -d '{
+     "home_city": "SFO",
+     "default_currency": "USD",
+     "max_budget_total": 1500,
+     "interests": ["food", "museums", "nature"],
+     "travel_style": "relaxed"
+     }'
      ```
    - `GET /api/video/first-frame/{video_source_id}`: to return the first frame of a specific video as a JPEG image
 3. Polygon Area Management
    - `GET /api/areas`: to list all defined polygon areas used for people counting
+     - Request: `None`
+     - Response: `'status', 'model'`
      ```bash
      curl -s "http://localhost:8000/api/areas"
      ```
    - `POST /api/areas`: to create a new polygon detection area for a given video source
+     - Request: `None`
+     - Response: `'status', 'model'`
      ```bash
      curl -s -X POST http://localhost:8000/api/areas \
       -H "Content-Type: application/json" \
