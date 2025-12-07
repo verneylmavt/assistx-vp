@@ -49,9 +49,9 @@ assistx-vp
    - `GET /health`: to verify that the backend is running correctly, responding to requests, and using the expected LLM configuration
      - Request: `None`
      - Response: `'status', 'model'`
-   ```bash
-   curl -s "http://localhost:8000/health"
-   ```
+     ```bash
+     curl -s "http://localhost:8000/health"
+     ```
 2. User Preferences
    - `GET /api/preferences/{user_id}`: to retrieve the user’s saved travel preferences or automatically initialize defaults if none exist
      - Request: `user_id`
