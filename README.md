@@ -66,14 +66,14 @@ assistx-vp
      curl -s -X PUT "http://localhost:8000/api/preferences/{user_id}" \
      -H "Content-Type: application/json" \
      -d '{
-     "home_city": "{home_city}",
-     "default_currency": "{default_currency}",
-     "max_budget_total": {max_budget_total},
-     "max_budget_per_day": {max_budget_per_day},
-     "interests": ["{interest_1}", "{interest_i}", "{interest_n}"],
-     "travel_style": "{travel_style}",
-     "preferred_airlines": ["{preferred_airlines_1}", "{preferred_airlines_i}", "{preferred_airlines_n}"],
-     "preferred_hotel_types": ["{preferred_hotel_types_1}", "{preferred_hotel_types_i}", "{preferred_hotel_types_n}"],
+        "home_city": "{home_city}",
+        "default_currency": "{default_currency}",
+        "max_budget_total": {max_budget_total},
+        "max_budget_per_day": {max_budget_per_day},
+        "interests": ["{interest_1}", "{interest_i}", "{interest_n}"],
+        "travel_style": "{travel_style}",
+        "preferred_airlines": ["{preferred_airlines_1}", "{preferred_airlines_i}", "{preferred_airlines_n}"],
+        "preferred_hotel_types": ["{preferred_hotel_types_1}", "{preferred_hotel_types_i}", "{preferred_hotel_types_n}"],
      }'
      ```
    - `GET /api/video/first-frame/{video_source_id}`: to return the first frame of a specific video as a JPEG image
