@@ -38,7 +38,7 @@ assistx-vp
 └─ requirements.txt
 ```
 
-## ⚖️ Solution Report and Solution Demo Video
+## 💡 Solution Report and Solution Demo Video
 
 - The solution report includes overview, solution, and vulnerability and risk.
 - The solution demo video shows the working app, accessible via api call.
