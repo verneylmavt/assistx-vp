@@ -61,7 +61,7 @@ assistx-vp
      ```
    - `PUT /api/preferences/{user_id}`: to update the user’s travel preferences with new budgets, origins, interests, or other settings
      - Request: `PreferencesUpdateRequest`
-     - Response: `PreferencesUpdateRequest`
+     - Response: `PreferencesResponse`
      ```bash
      curl -s -X PUT "http://localhost:8000/api/preferences/{user_id}" \
      -H "Content-Type: application/json" \
