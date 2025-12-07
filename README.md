@@ -72,8 +72,8 @@ assistx-vp
         "max_budget_per_day": {max_budget_per_day},
         "interests": ["{interest_1}", "{interest_i}", "{interest_n}"],
         "travel_style": "{travel_style}",
-        "preferred_airlines": ["{preferred_airlines_1}", "{preferred_airlines_i}", "{preferred_airlines_n}"],
-        "preferred_hotel_types": ["{preferred_hotel_types_1}", "{preferred_hotel_types_i}", "{preferred_hotel_types_n}"],
+        "preferred_airlines": ["{preferred_airline_1}", "{preferred_airline_i}", "{preferred_airline_n}"],
+        "preferred_hotel_types": ["{preferred_hotel_type_1}", "{preferred_hotel_type_i}", "{preferred_hotel_type_n}"]
      }'
      ```
    - `GET /api/video/first-frame/{video_source_id}`: to return the first frame of a specific video as a JPEG image
