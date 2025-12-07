@@ -1,67 +1,47 @@
-# Bithealth Associate AI Engineer Take Home Assessment: Code Refactoring
+# AssistX AI Engineer Test Case: Vacation Planner
 
-This project contains refactored version of the Python application in `bithealth-crfc/assets/main.py`. The original implementation was a functional but intentionally unstructured single-file RAG (Retrieval-Augmented Generation) demo built using FastAPI, LangGraph, and Qdrant with an in-memory fallback. The objective of this technical test is to redesign existing working code into a clean, maintainable, and testable architecture through proper separation of concerns and object-oriented structuring.
+This project implements a proof-of-concept AI vacation planner that can understand natural-language travel requests, interpret user preferences, check (mock) calendar availability, search for mock flights and hotels, and assemble a structured, day-by-day VacationPlan using an LLM-powered agent equipped with carefully defined tools. It also provides a dedicated booking endpoint that allows users to confirm a proposed itinerary once they explicitly approve it. The implementation combines FastAPI for the backend API, Pydantic v2 for data modeling and validation, PydanticAI for agent orchestration, OpenAI’s GPT-5-Nano for natural-language reasoning, and a lightweight in-memory storage layer to keep the proof-of-concept fully self-contained and easy to run.
 
-The refactored solution preserves all external behaviours, including the exact /add, /ask, and /status endpoints, while reorganizing the system into clear layers: API handling, RAG workflow logic, embedding generation, and document storage. This modularization eliminates global mutable state, makes dependencies explicit, and prepares the codebase for future extensibility and unit testing.
-
-[Click here to learn more about the project: bithealth-crfc/assets/README.md](https://github.com/verneylmavt/bithealth-crfc/blob/dccd8b2dd3879da12a976d1d83bc1a7281654e66/assets/README.md).
+<!-- [Click here to learn more about the project: assistx-vp/assets/Task - AI Engineer (LLM) Revised.pdf](<https://github.com/verneylmavt/assistx-vp/blob/fa8ebaab0b877b795af87f442eb632d78826cb3b/assets/Task%20-%20AI%20Engineer%20(LLM)%20Revised.pdf>). -->
 
 ## 📁 Project Structure
 
 ```
-bithealth-crfc
+assistx-vp
 │
-├─ app/
-│  ├─ api.py                      # API layer (FastAPI router)
-│  ├─ config.py                   # Configuration module
-│  ├─ main.py                     # Application entrypoint
-│  ├─ schemas.py                  # Request models (schemas)
-│  ├─ __init__.py
+├─ app/                              # Solution app
+│  ├─ config.py                      # Configuration files
+│  ├─ main.py                        # FastAPI app
 │  │
-│  └─ services/
-│     ├─ document_store.py        # Document store abstraction
-│     ├─ embeddings.py            # Embedding service
-│     ├─ rag.py                   # RAG workflow service
-│     └─ __init__.py
+│  ├─ agent/
+│  │  └─ vacation_agent.py           # PydanticAI agent with tools
+│  │
+│  ├─ models/
+│  │  ├─ api.py                      # API models
+│  │  └─ domain.py                   # Domain models
+│  │
+│  ├─ services/
+│  │  ├─ bookings.py                 # Booking service
+│  │  ├─ calendar.py                 # Calendar service
+│  │  ├─ preferences.py              # Preferences service
+│  │  ├─ sessions.py                 # Session helper
+│  │  └─ travel_search.py            # Travel search service (for mock flights/hotels)
+│  │
+│  └─ storage/
+│     └─ in_memory.py                # In-memory storage
 │
+├─ assets/
+│  ├─ vacation_planner_solution.pdf  # Solution report
+│  └─ vacation_planner_demo.gif      # Solution demo video
+│
+├─ .env
 └─ requirements.txt
 ```
 
-## ⚖️ Design Decisions
+## ⚖️ Solution Report and Solution Demo Video
 
-The core goal of the refactor was to reorganize the system around clear software-engineering principles:
-
-- **Encapsulation**: Each concept (embeddings, storage, RAG workflow, API) lives in its own class/module.
-- **Separation of Concerns**:
-  - The HTTP layer does no computation.
-  - The RAG layer knows nothing about FastAPI.
-  - The storage layer is completely swappable.
-- **Explicit Dependencies**: A single application factory creates all components and wires them together. This eliminates hidden global state and makes control flow predictable.
-- **Modularity**: Code is structured so future extensions (new storage backends, real embedding models, additional LangGraph steps) require minimal modification.
-
-## ❓ Trade-Off
-
-A potential simplification was to remove LangGraph entirely and rewrite the retrieval → answer process as a simple, sequential function. The existing workflow is linear and does not strictly require a graph framework.
-
-However, keeping LangGraph has advantages:
-
-- It honours the original system design.
-- It preserves compatibility with more complex workflows.
-- It demonstrates the ability to encapsulate external frameworks inside clean architectural boundaries.
-
-This trade-off favours extensibility and alignment with the intended evaluation criteria over minimalism.
-
-## 🛠️ Maintainability Improvement
-
-The refactored architecture improves maintainability in several concrete ways:
-
-- The application can now be tested in fine-grained layers without dependence on the web server or Qdrant.
-- Modifying or extending one part of the system no longer risks side effects in others.
-- The explicit class boundaries reduce cognitive load and make the codebase easier to understand.
-- New developers can quickly locate where specific logic lives—embedding logic in embeddings.py, retrieval logic in document_store.py, workflow logic in rag.py, and API routing in api.py.
-- The absence of global mutable state prevents hard-to-debug behaviour in concurrent or multi-worker environments.
-
-Overall, this redesign transforms a functional prototype into a maintainable foundation suitable for production-grade systems.
+- The solution report includes overview, solution, and vulnerability and risk.
+- The solution demo video shows the working app, accessible via api call.
 
 ## 🔌 API
 
