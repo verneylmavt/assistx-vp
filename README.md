@@ -86,7 +86,7 @@ assistx-vp
      -H "Content-Type: application/json" \
      -d '{
         "session_id": "{session_id}",
-        "user_id": "(user_id)",
+        "user_id": "{user_id}",
         "message": "{message_to_llm}",
         "allow_booking": {bool}
      }'
@@ -113,29 +113,24 @@ assistx-vp
    - Git
    - Python
    - Conda or venv
-   - Docker
 
 1. Clone the repository:
 
    ```bash
-    git clone https://github.com/verneylmavt/bithealth-crfc.git
-    cd bithealth-crfc
+    git clone https://github.com/verneylmavt/assistx-vp.git
+    cd assistx-vp
    ```
 
 2. Create environment and install dependencies:
 
    ```bash
-   conda create -n bithealth python=3.10 -y
-   conda activate bithealth
+   conda create -n assistx-vp python=3.11 -y
+   conda activate assistx-vp
 
    pip install -r requirements.txt
    ```
 
-3. Start Docker Desktop and run Qdrant:
-
-   ```bash
-   docker run -p 6333:6333 -d qdrant/qdrant
-   ```
+3. Fill the required OpenAI API Key in `.env`
 
 4. Run the server:
 
@@ -143,7 +138,7 @@ assistx-vp
    uvicorn app.main:app --reload
    ```
 
-5. Open the dashboard:
+5. Open the API documentation to make an API call and interact with the app:
    ```bash
-   start "http://127.0.0.1:8000/dashboard"
+   start "http://127.0.0.1:8000/docs"
    ```

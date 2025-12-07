@@ -24,5 +24,5 @@ def get_settings() -> Settings:
     return Settings(
         app_env=os.getenv("APP_ENV", "dev"),
         openai_model_name=os.getenv("OPENAI_MODEL_NAME", "gpt-5-nano"),
-        openai_api_key=os.getenv("OPENAI_API_KEY", None),
+        openai_api_key=os.getenv("OPENAI_API_KEY", ""),
     )
