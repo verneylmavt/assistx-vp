@@ -131,7 +131,7 @@ assistx-vp
    pip install -r requirements.txt
    ```
 
-3. Fill the required OpenAI API key in `.env`
+3. Fill the required `OPENAI_API_KEY` in `.env`
 
 4. Run the server:
 
